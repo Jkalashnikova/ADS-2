@@ -31,18 +31,36 @@ double expn(double x, uint16_t count) {
     return e;
 }
 
-double sinn(double x, uint16_t count) {
-    double si = 0;
-    for (uint64_t i = 1; i <= count; i++) {
-        si += calcItem(x, (2 * i) - 1) * pown(-1, i - 1);
-    }
-    return si;
-}
+double sinn(double x, uint16_t n) {
+    double sum = 0;
+    bool flag = false;
+    for (uint16_t i = 1; i < n; i += 2) {
+        for (uint16_t i = 1; i < 2 * n; i += 2) {
+            if (flag) {
+                sum -= calcItem(x, i);
+                flag = false;
+            } else {
+                sum += calcItem(x, i);
+                flag = true;
+            }
+        }
+        return sum;
 
-double cosn(double x, uint16_t count) {
-    double co = 0;
-    for (uint64_t i = 1; i <= count; i++) {
-        co += calcItem(x, (2 * i) - 2) * pown(-1, i - 1);
     }
-    return co;
+}
+double cosn(double x, uint16_t count) {
+    double sum = 1;
+    bool flag = true;
+    for (uint16_t i = 2; i < count; i += 2) {
+        for (uint16_t i = 2; i < 2 * count; i += 2) {
+            if (flag) {
+                sum -= calcItem(x, i);
+                flag = false;
+            } else {
+                sum += calcItem(x, i);
+                flag = true;
+            }
+        }
+        return sum;
+    }
 }
