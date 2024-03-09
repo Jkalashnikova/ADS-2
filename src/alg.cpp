@@ -29,7 +29,6 @@ double expn(double x, uint16_t count) {
         e += calcItem(x, i);
     }
     return e;
-
 }
 
 double sinn(double x, uint16_t count) {
