@@ -34,33 +34,29 @@ double expn(double x, uint16_t count) {
 double sinn(double x, uint16_t n) {
     double sum = 0;
     bool flag = false;
-    for (uint16_t i = 1; i < n; i += 2) {
-        for (uint16_t i = 1; i < 2 * n; i += 2) {
-            if (flag) {
-                sum -= calcItem(x, i);
-                flag = false;
-            } else {
-                sum += calcItem(x, i);
-                flag = true;
-            }
+    for (uint16_t i = 1; i < 2 * n; i += 2) {
+        if (flag) {
+            sum -= calcItem(x, i);
+            flag = false;
+        } else {
+            sum += calcItem(x, i);
+            flag = true;
         }
-        return sum;
-
     }
+    return sum;
 }
+
 double cosn(double x, uint16_t count) {
     double sum = 1;
     bool flag = true;
-    for (uint16_t i = 2; i < count; i += 2) {
-        for (uint16_t i = 2; i < 2 * count; i += 2) {
-            if (flag) {
-                sum -= calcItem(x, i);
-                flag = false;
-            } else {
-                sum += calcItem(x, i);
-                flag = true;
-            }
+    for (uint16_t i = 2; i < 2 * count; i += 2) {
+        if (flag) {
+            sum -= calcItem(x, i);
+            flag = false;
+        } else {
+            sum += calcItem(x, i);
+            flag = true;
         }
-        return sum;
     }
+    return sum;
 }
